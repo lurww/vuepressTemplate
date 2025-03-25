@@ -4,6 +4,8 @@ import sidebar from "./sidebar";
 import footer from "./footer";
 import extraSideBar from "./extraSideBar";
 
+import MarkdownItKatex from "markdown-it-katex";
+
 const author = "程序员鱼皮";
 const domain = "https://codefather.cn";
 const tags = ["程序员", "编程", "计算机"];
@@ -39,6 +41,11 @@ export default defineConfig({
     ],
   ],
   permalink: "/:slug",
+
+  // 配置 markdown 解析器
+  extendsMarkdown: (md) => {
+    md.use(MarkdownItKatex);
+  },
 
   // 监听文件变化，热更新
   extraWatchFiles: [".vuepress/*.ts", ".vuepress/sidebars/*.ts"],
